@@ -4,4 +4,4 @@ begin
   task default: :spec
 rescue LoadError
   # rspec not available
-end
+end 

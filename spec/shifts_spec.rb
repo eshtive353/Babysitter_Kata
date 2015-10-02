@@ -22,4 +22,19 @@ describe Shifts do
     expect(night.end_time(4)).to eq(4)
   end
 
+  it 'a bedtime later than midnight is too late for the kid' do
+    night = Shifts.new
+    expect(night.bedtime(0.5)).to eq('Are you crazy? Your child needs some sleep!')
+  end
+
+  it 'a bedtime of midnight returns a value of 24 for math reasons' do
+    night = Shifts.new
+    expect(night.bedtime(0)).to eq(24)
+  end
+
+  it 'any other bedtime is saved as is' do
+    night = Shifts.new
+    expect(night.bedtime(22)).to eq(22)
+  end
+
 end

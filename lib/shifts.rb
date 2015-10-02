@@ -24,4 +24,16 @@ class Shifts
     end
   end
 
+  def bedtime time
+    if time < 4 && time > 0
+      "Are you crazy? Your child needs some sleep!"
+    elsif time == 0
+      @bed = 24
+      @bed
+    else
+      @bed = time
+      @bed
+    end
+  end
+
 end
