@@ -15,4 +15,13 @@ class Shifts
     end
   end
 
+  def end_time time
+    if time > 4
+      "That end time is too late!"
+    else
+      @ending_time = time
+      @ending_time
+    end
+  end
+
 end
