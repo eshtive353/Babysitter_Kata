@@ -36,4 +36,15 @@ class Shifts
     end
   end
 
+  def first_shift
+    @evening_hours = @bed - @starting_time
+    @evening_hours
+    flr = @evening_hours.floor
+    if (flr + 0.25) > @evening_hours
+      @evening_hours = @evening_hours.floor
+    else
+      @evening_hours = @evening_hours.ceil
+    end
+  end
+
 end

@@ -27,7 +27,7 @@ describe Shifts do
     expect(night.bedtime(0.5)).to eq('Are you crazy? Your child needs some sleep!')
   end
 
-  it 'a bedtime of midnight returns a value of 24 for math reasons' do
+  it 'a bedtime of midnight returns a value of 24 for calculation reasons' do
     night = Shifts.new
     expect(night.bedtime(0)).to eq(24)
   end
@@ -35,6 +35,30 @@ describe Shifts do
   it 'any other bedtime is saved as is' do
     night = Shifts.new
     expect(night.bedtime(22)).to eq(22)
+  end
+
+  it 'the first shift is calculated' do
+    night = Shifts.new
+    night.start_time(17)
+    night.bedtime(22)
+    expect(night.first_shift).to eq(5)
+  end
+
+  it 'if the babysitter works less than a quarter of an hour for first shift, rounds down' do
+    night = Shifts.new
+    night.start_time(17)
+    night.bedtime(22.1)
+    expect(night.first_shift).to eq(5)
+  end
+
+  it 'if the babysitter works a quarter of an hour or more for first shift, rounds up' do
+    night = Shifts.new
+    night.start_time(17)
+    night.bedtime(22.25)
+    expect(night.first_shift).to eq(6)
+  end
+
+  it 'the second shift is calculated' do
   end
 
 end
